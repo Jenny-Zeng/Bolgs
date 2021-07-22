@@ -2,7 +2,7 @@
 今天，要和大家分享Jenkins的基本使用。本文整理了一些在日常工作中经常用到的功能和插件，在此分享给大家。
 ### 概念
 Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具，何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序。如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
-## 特征
+### 特征
 - 开源的Java语言持续集成工具，支持持续集成，持续部署
 - 易于安装部署配置，可通过yum或者war包以及用过docker容器等快速实现安装部署，可方便web界面配置管理。
 - 消息通知及测试报告，集成RSS/E-mail通过RSS发布构建结果或构建完成时通过e-mail通知，生成IUnit/TestNG测试报告
@@ -68,9 +68,17 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
   - Add timestamps to the Console Output：在控制台最左侧一列添加输出日志的时间。
 
 - Build：构建步骤，告诉Jenkins想要如何构建项目，Jenkins提供了多种方式
-  - Execute shell：执行特定的shell脚本，注意：只需要填写相对于工作目录的脚本名称，不过在构建步骤中尽量避免使用系统级别的脚本，这样可以减少对机器配置的依赖，一个方便的替代方式是
+  - Execute shell：执行特定的shell脚本，注意：只需要填写相对于工作目录的脚本名称，不过在构建步骤中尽量避免使用系统级别的脚本，这样可以减少对机器配置的依赖，一个方便的替代方式是使用Groovy或者Gant执行系统脚本。
+  - Copy artifacts from another project
+  - Trigger/call builds on other projects
 
-
+- Post-build Actions,构建后操作，在构建完成之后，可能需要归档某些生成的构建产物，报告测试结果，并把相关结果通知给相关人员。
+  - Archive the artifacts
+    可以使用通配符结构归档构建产物，例如 \**/*.zip，如果有多个文件进行归档，可以使用逗号进行分隔。
+   
+  - Editable Email Notification
+    邮件通知，在Project Recipient List中输入相关人员的邮箱，发送的内容可在“Default Content”中以HTML的语法结构输入。
+ 
 
 
 
@@ -118,3 +126,24 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
 
 ### 系统环境变量
+- WORKSPACE
+  工作空间的绝对路径
+- BUILD_NUMBER
+  当前的构建号，比如 “8”。
+- JOB_NAME
+  当前job的名字，比如Test-demo。
+- BUILD_TAG
+  为了便于识别当前构建的job，比如jenkins-Test-demo-8。
+- NODE_NAME
+  如果构建运行在slave上，则输出该节点的名字，如果构建运行在master上，则输出master。
+- NODE_LABELS
+  运行该构建节点标签列表
+- JENKINS_HOME
+  主节点上为Jenkins存储数据分配目录的绝对路径，比如 /Users/xxxx/.jenkins
+- JENKINS_URL
+  jenkins服务器完整的URL，比如 http://79d3725b30cf.ngrok.io
+- JOB_URL
+  当前构建job完整的 URLhttp://79d3725b30cf.ngrok.io/job/Test-demo/
+- BUILD_URL
+  当前构建完整的URL，比如 http://79d3725b30cf.ngrok.io/job/Test-demo/8/
+
