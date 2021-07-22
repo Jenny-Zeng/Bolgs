@@ -1,12 +1,13 @@
 # Jenkins入门实战
-
-今天，要和大家分享Jenkins的基本使用，首先我们需要了解什么是Jenkins，以及它可以为我们做些什么？
-
-Jenkin是一个开源的、提供友好操作界面的持续集成（CI）工具，
-
-Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具，何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序。如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
-
-在开启实战之旅之前我们应该准备必要的环境，比如安装java、安装Git、创建GitHub、配置SSH密钥等。
+今天，要和大家分享Jenkins的基本使用。本文整理了一些在日常工作中经常用到的功能和插件，在此分享给大家。
+### 概念
+Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具，何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序。如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
+## 特征
+- 开源的Java语言持续集成工具，支持持续集成，持续部署
+- 易于安装部署配置，可通过yum或者war包以及用过docker容器等快速实现安装部署，可方便web界面配置管理。
+- 消息通知及测试报告，集成RSS/E-mail通过RSS发布构建结果或构建完成时通过e-mail通知，生成IUnit/TestNG测试报告
+- 分布式构建：支持Jenkins能够让多台计算机一起构建/测试
+- 丰富的插件安装：支持扩展插件，
 
 ### 准备工作
 
@@ -17,13 +18,11 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 - 创建Github
 - 配置SSH密钥，建立计算机和GitHub服务器之间的连接
 - 安装Jenkins
+### 入门实践 
 
-在Jenkins官网安装合适的版本，接下来我们开始迈入Jenkins大门。
-
-构建第一个Jenkins job，首先Jenkins提供了很多类型的项目，我们首选freestyle类型，
-
+在Jenkins中提供了很多类型的项目，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面。
 ![jenkins-1](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-1.png)
-
+主要包含四大功能模块，下面一一展开描述：
 - General:可以设置一些全局性的选项，在此列举两个经常使用的功能。
 
   - Discard old builds：丢弃旧的构建，意思是，对于一个项目的每次构建，都会保留每次的构建信息，当我们只想要最近的三次构建信息，只需要把把保留最大构建数据设置为3即可。
@@ -37,7 +36,7 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 
   ![jenkins-source](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-source.png)
 
-- Build Triggers，在这个模块中可以设置定时构建，就是在什么条件下会触发构建，其中这几个功能
+- Build Triggers，在这个模块中可以设置定时构建，就是在什么条件下会触发构建，主要讲述下面三个功能：
 
   - Build periodically，不管版本库代码是否发生变化都周期性执行构建。
   - Poll SCM：根据设定的时间比较源码，如果发生变更，则进行构建。
@@ -66,15 +65,6 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
   - Add timestamps to the Console Output：在控制台最左侧一列添加输出日志的时间。
 
 - Build
-
-### Jenkins的特性
-
-- 开源的Java语言持续集成工具，支持持续集成，持续部署
-- 易于安装部署配置，可通过yum或者war包以及用过docker容器等快速实现安装部署，可方便web界面配置管理。
-- 消息通知及测试报告，集成RSS/E-mail通过RSS发布构建结果或构建完成时通过e-mail通知，生成IUnit/TestNG测试报告
-- 分布式构建：支持Jenkins能够让多台计算机一起构建/测试
-- 文件识别：Jenkins能够跟踪哪次构建生成哪些jar，哪次构建使用哪个版本的jar等。
-- 丰富的插件安装：支持扩展插件，
 
 
 
