@@ -21,6 +21,7 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
 ### 入门实践 
 
 在Jenkins中提供了很多类型的项目，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面。
+
 ![jenkins-1](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-1.png)
 主要包含四大功能模块，下面一一展开描述：
 - General:可以设置一些全局性的选项，在此列举两个经常使用的功能。
@@ -113,10 +114,4 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
 4. ![image-20210722120516422](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722120516422.png)
 
 
-
-
-
-### Jenkins中插件的使用
-
-1. 
 
