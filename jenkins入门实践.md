@@ -20,27 +20,29 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
 - 安装Jenkins
 ### 入门实践 
 
-在Jenkins中提供了很多类型的项目，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面。
+Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面。
 
 ![jenkins-1](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-1.png)
-主要包含四大功能模块，下面一一展开描述：
-- General:可以设置一些全局性的选项，在此列举两个经常使用的功能。
 
-  - Discard old builds：丢弃旧的构建，意思是，对于一个项目的每次构建，都会保留每次的构建信息，当我们只想要最近的三次构建信息，只需要把把保留最大构建数据设置为3即可。
+主要包含四大功能模块，下面一一展开描述：
+- General:设置全局性的选项，比如项目名、描述信息等，在此列举两个经常使用的功能。
+
+  - Discard old builds：丢弃旧的构建，构建job会消耗大量的磁盘空间，尤其是存储的构建产物，所以该项允许我们限制在构建历史记录的作业数。可以告诉Jenkins只保留最近的构建或者保留不超过指定数量大构建，如果某个构建有特殊价值，则在**构建细节页面**右上角点击 Keep this build forever，意思是告诉Jenkins永远保留这个构建。
 
   - This project is parameterized：设置一些参数（包括String、boolean、Choice、Git参数等）
 
-- Source Code Managemant，输入想要构建的repo 和Credentials，在Branches specifier中，默认值为*/master，不过在实际工作中，我们可能通过分支或者tag进行构建，分别有如下写法：
+- Source Code Managemant，配置源码管理，持续集成服务器最基本的作用就是监控版本控制系统，定期检出并构建源码的最新版本，输入想要构建的Git 仓库和Credentials，在Branches specifier中，默认值为*/master，如果为空，则所有的分支都会被构建，改语法支持通配符或者特定分支书写，下面列举两个例子：
 
   - refs/heads/BranchName：根据分支进行构建
   - \**/tags/**：通过GitHub中的Tag进行触发Jenkins构建，
 
   ![jenkins-source](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-source.png)
 
-- Build Triggers，在这个模块中可以设置定时构建，就是在什么条件下会触发构建，主要讲述下面三个功能：
+- Build Triggers，构建触发器，Jenkins提供了时间轮寻方式，有三种基本方式可以触发构建
 
+  - Build after other projects are built：另一个构建job完成之后，触发本次构建job
   - Build periodically，不管版本库代码是否发生变化都周期性执行构建。
-  - Poll SCM：根据设定的时间比较源码，如果发生变更，则进行构建。
+  - Poll SCM：仅当SCM收到变化时，才会触发Jenkins构建。
 
   注意：Build periodically和Poll SCM的语法是相同的，
 
@@ -65,7 +67,8 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
   - Delete workspace before build starts,在开启本次构建之前，先删除现有的工作空间。这种情况要是视情况而定。如果项目改动比较大的时候，需要进行删除操作。
   - Add timestamps to the Console Output：在控制台最左侧一列添加输出日志的时间。
 
-- Build
+- Build：构建步骤，告诉Jenkins想要如何构建项目，Jenkins提供了多种方式
+  - Execute shell：执行特定的shell脚本，注意：只需要填写相对于工作目录的脚本名称，不过在构建步骤中尽量避免使用系统级别的脚本，这样可以减少对机器配置的依赖，一个方便的替代方式是
 
 
 
@@ -90,10 +93,10 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
    在构建的脚本中我们可以书写：
 
    ```
-   if [ $isTure == true ]
+   if [ $isTure = true ]
    then
    	echo "上传到fir"
-       fir publish XXXX
+    fir publish XXXX
    else
    	echo "暂不上传"
    fi
@@ -114,4 +117,4 @@ Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供
 4. ![image-20210722120516422](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722120516422.png)
 
 
-
+### 系统环境变量
