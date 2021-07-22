@@ -122,7 +122,7 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
    ![image-20210722115158461](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722115158461.png)
 
-4. ![image-20210722120516422](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722120516422.png)
+  ![image-20210722120516422](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722120516422.png)
 
 
 ### 系统环境变量
