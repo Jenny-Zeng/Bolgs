@@ -22,7 +22,7 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 
 构建第一个Jenkins job，首先Jenkins提供了很多类型的项目，我们首选freestyle类型，
 
-![jenkins-1](file:///Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210702115247544.png?lastModify=1626934157)
+![jenkins-1](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-1.png)
 
 - General:可以设置一些全局性的选项，在此列举两个经常使用的功能。
 
@@ -35,7 +35,7 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
   - refs/heads/BranchName：根据分支进行构建
   - \**/tags/**：通过GitHub中的Tag进行触发Jenkins构建，
 
-  ![jenkins-source](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722143609094.png)
+  ![jenkins-source](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-source.png)
 
 - Build Triggers，在这个模块中可以设置定时构建，就是在什么条件下会触发构建，其中这几个功能
 
@@ -84,7 +84,7 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 
 在工具栏有一个 This project is parameterized,其中提供了很多的参数
 
-![parameter](/Users/zengzhaoxia/Bolgs/pics/parameter.png)
+![parameter](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/parameter.png)
 
 1. String Parameter
 
@@ -92,7 +92,7 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 
 2. Boolean Parameter
 
-   ![image-20210722113509708](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722113509708.png)
+   ![image-20210722113509708](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722113509708.png)
 
    Boolean类型可以用于构建时的判断，当勾选Default Value时，默认值为ture。
 
@@ -112,15 +112,15 @@ Jenkins，最早被称为Hudson是一个java语言编写的开源的、提供友
 
    Jenkins中提供了单选和多选项，在设置的过程中，我们需要在Choose Source for Value中自定义选项。
 
-   ![image-20210722114240169](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722114240169.png)
+   ![image-20210722114240169](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722114240169.png)
 
    其中，提供了很多的类型，其中有单选、多选、复选框，展示如下，设置不同的参数类型就会有不同的展示效果。
 
-   ![image-20210722135124265](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722135124265.png)
+   ![image-20210722135124265](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722135124265.png)
 
-   ![image-20210722115158461](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722115158461.png)
+   ![image-20210722115158461](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722115158461.png)
 
-4. ![image-20210722120516422](/Users/zengzhaoxia/Library/Application Support/typora-user-images/image-20210722120516422.png)
+4. ![image-20210722120516422](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/image-20210722120516422.png)
 
 
 
