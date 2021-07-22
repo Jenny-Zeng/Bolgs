@@ -127,7 +127,7 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
 ### 系统环境变量
 - WORKSPACE
-工作空间的绝对路径
+    工作空间的绝对路径
 - BUILD_NUMBER
   当前的构建号，比如 “8”。
 - JOB_NAME
