@@ -85,22 +85,22 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
 ### 系统环境变量
 - WORKSPACE
-    工作空间的绝对路径
+    工作空间的绝对路径.
 - BUILD_NUMBER
-  当前的构建号，比如 “8”。
+  当前的构建号，比如 “8”.
 - JOB_NAME
-  当前job的名字，比如Test-demo。
+  当前job的名字，比如Test-demo.
 - BUILD_TAG
-  为了便于识别当前构建的job，比如jenkins-Test-demo-8。
+  为了便于识别当前构建的job，比如jenkins-Test-demo-8.
 - NODE_NAME
-  如果构建运行在slave上，则输出该节点的名字，如果构建运行在master上，则输出master。
+  如果构建运行在slave上，则输出该节点的名字，如果构建运行在master上，则输出master.
 - NODE_LABELS
-  运行该构建节点标签列表
+  运行该构建节点标签列表.
 - JENKINS_HOME
-  主节点上为Jenkins存储数据分配目录的绝对路径，比如 /Users/xxxx/.jenkins
+  主节点上为Jenkins存储数据分配目录的绝对路径，比如 /Users/xxxx/.jenkins.
 - JENKINS_URL
-  jenkins服务器完整的URL，比如 http://79d3725b30cf.ngrok.io
+  jenkins服务器完整的URL，比如 http://79d3725b30cf.ngrok.io.
 - JOB_URL
-  当前构建job完整的 URLhttp://79d3725b30cf.ngrok.io/job/Test-demo/
+  当前构建job完整的 URLhttp://79d3725b30cf.ngrok.io/job/Test-demo/.
 - BUILD_URL
-  当前构建完整的URL，比如 http://79d3725b30cf.ngrok.io/job/Test-demo/8/
+  当前构建完整的URL，比如 http://79d3725b30cf.ngrok.io/job/Test-demo/8/.
