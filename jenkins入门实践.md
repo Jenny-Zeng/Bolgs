@@ -1,29 +1,28 @@
 # Jenkins入门实战
 本文整理了一些在日常工作中经常用到的Jenkins功能和插件，在此分享给大家。
 ### 概念
-Jenkins，最早被称为Hudson，是一个java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具。何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序，如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
+Jenkins，最早被称为Hudson，是一个Java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具。何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序，如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
 ### 特征
 - 开源的Java语言持续集成工具，支持持续集成、持续部署；
-- 易于安装部署配置，可通过yum或者war包以及用过docker容器等快速实现安装部署，可方便web界面配置管理；
-- 消息通知及测试报告，集成RSS/E-mail通过RSS发布构建结果或构建完成时通过e-mail通知，生成IUnit/TestNG测试报告；
+- 易于安装部署配置，可通过Yum或者War包以及Docker容器等快速实现安装部署，可方便web界面配置管理；
+- E-mail通知及测试报告产出；
 - 分布式构建，Jenkins支持多台计算机一起构建/测试；
-- 丰富的插件安装。
+- 支持丰富的插件安装。
 
 ### 准备工作
 
-在开启实践之前，我们需要做一些准备工作：
+在开启Jenkins实践之前，我们需要做一些准备工作：
 
 - 安装JDK；
 - 安装Git；
-- 创建Github；
+- 创建Github账号；
 - 配置SSH密钥，建立计算机和GitHub服务器之间的连接；
 - 安装Jenkins；
 ### 入门实践 
 
 Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面：
 
-![Jenkins-1.png](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-1.png)
-
+![Jenkins-1.png](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-1.png)
 
 主要包含五大功能模块，下面一一展开描述：
 - General:设置全局性的选项，比如项目名、描述信息等，在此列举两个经常使用的功能。
@@ -37,7 +36,7 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
   - refs/heads/BranchName：根据分支进行构建
   - \**/tags/**：通过GitHub中的Tag进行触发Jenkins构建，
 
-  ![](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-source.png)
+  ![](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-source.png)
 
 - Build Triggers，构建触发器，
 
@@ -73,7 +72,7 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
   - Execute shell：执行特定的shell脚本，注意：只需要填写相对于工作目录的脚本名称，不过在构建步骤中尽量避免使用系统级别的脚本，这样可以减少对机器配置的依赖，一个方便的替代方式是使用Groovy或者Gant执行系统脚本。
   - Copy artifacts from another project：可以拷贝其他项目中的artifact产物，作为本次项目文件使用。
   - Trigger/call builds on other projects：当本次Jenkins项目触发时，可以触发另一个Jenkins项目，当有多个项目时，可以使用英文逗号隔开。
- ![](https://github.com/Jenny-Zeng/Bolgs/blob/main/pics/jenkins-2.jpg)
+ ![](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-2.jpg)
  
 
 - Post-build Actions,构建后操作，在构建完成之后，可能需要归档某些生成的构建产物，报告测试结果，并把相关结果通知给相关人员。
