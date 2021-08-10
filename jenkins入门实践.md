@@ -1,11 +1,11 @@
 # Jenkins入门实战
 本文整理了一些在日常工作中经常用到的Jenkins功能和插件，在此分享给大家。
 ### 概念
-Jenkins，最早被称为Hudson，是一个Java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具。何为持续集成？就是它可以监控版本控制系统的变化。举一个简单的场景，无论任何时候，只要检测到有变化，那么Jenkins就会自动编译和测试我们的应用程序，如果出现了任何问题，它会通知开发人员，以便他们感知并解决这个问题。
+Jenkins，最早被称为Hudson，是一个Java语言编写的开源的、提供友好操作界面的持续集成（CI，Continuous integration）工具。何为持续集成？就是让产品可以快速迭代，同时还能保持高质量。它的核心措施是，代码集成到主干之前，自动执行各种检查和测试。而Jenkins就可以比较轻松的完成这一需求。
 ### 特征
 - 开源的Java语言持续集成工具，支持持续集成、持续部署；
-- 易于安装部署配置，可通过Yum或者War包以及Docker容器等快速实现安装部署，可方便web界面配置管理；
-- E-mail通知及测试报告产出；
+- 易于安装部署配置，可通过Yum或者War包以及Docker容器等快速实现安装部署，可方便Web界面配置管理；
+- E-mail消息通知及测试报告输出；
 - 分布式构建，Jenkins支持多台计算机一起构建/测试；
 - 支持丰富的插件安装。
 
@@ -17,17 +17,17 @@ Jenkins，最早被称为Hudson，是一个Java语言编写的开源的、提供
 - 安装Git；
 - 创建Github账号；
 - 配置SSH密钥，建立计算机和GitHub服务器之间的连接；
-- 安装Jenkins；
+- 安装Jenkins。
 ### 入门实践 
 
 Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建一个项目之后，我们会看到下面的页面：
 
-![Jenkins-1.png](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-1.png)
+![Jenkins-1.png](pics/jenkins-1.png)
 
 主要包含五大功能模块，下面一一展开描述：
 - General:设置全局性的选项，比如项目名、描述信息等，在此列举两个经常使用的功能。
 
-  - Discard old builds：丢弃旧的构建，构建job会消耗大量的磁盘空间，尤其是存储的构建产物，所以该项允许我们限制在构建历史记录的作业数。可以告诉Jenkins只保留最近的构建或者保留不超过指定数量大构建，如果某个构建有特殊价值，则在**构建细节页面**右上角点击 Keep this build forever，意思是告诉Jenkins永远保留这个构建。
+  - Discard old builds：丢弃旧的构建，构建Job会消耗大量的磁盘空间，尤其是存储的构建产物，所以该项允许我们限制在构建历史记录的作业数。可以告诉Jenkins只保留最近的构建或者保留不超过指定数量大构建，如果某个构建有特殊价值，则在**构建细节页面**右上角点击 Keep this build forever，意思是告诉Jenkins永远保留这个构建。
 
   - This project is parameterized：设置一些参数（包括String、Boolean、Choice、Git参数等），这部分的内容可以参考小编的笔记：[Jenkins参数的使用](https://blog.csdn.net/weixin_42182599/article/details/119177227?spm=1001.2014.3001.5501)
 
@@ -36,9 +36,9 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
   - refs/heads/BranchName：根据分支进行构建
   - \**/tags/**：通过GitHub中的Tag进行触发Jenkins构建，
 
-  ![](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-source.png)
+  ![](pics/jenkins-source.png)
 
-- Build Triggers，构建触发器，
+- Build Triggers，构建触发器。
 
   - Build after other projects are built：另一个构建job完成之后，触发本次构建job
   - Build periodically，不管版本库代码是否发生变化都周期性执行构建。
@@ -70,9 +70,9 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
 - Build：构建步骤，告诉Jenkins想要如何构建项目，Jenkins提供了多种方式：
   - Execute shell：执行特定的shell脚本，注意：只需要填写相对于工作目录的脚本名称，不过在构建步骤中尽量避免使用系统级别的脚本，这样可以减少对机器配置的依赖，一个方便的替代方式是使用Groovy或者Gant执行系统脚本。
-  - Copy artifacts from another project：可以拷贝其他项目中的artifact产物，作为本次项目文件使用。
+  - Copy artifacts from another project：可以拷贝其他项目中的Artifact产物，作为本次项目文件使用。
   - Trigger/call builds on other projects：当本次Jenkins项目触发时，可以触发另一个Jenkins项目，当有多个项目时，可以使用英文逗号隔开。
- ![](https://github.com/qbox/qtest/blob/develop/blogs/pics/jenkins-2.jpg)
+ ![](pics/jenkins-2.jpg)
  
 
 - Post-build Actions,构建后操作，在构建完成之后，可能需要归档某些生成的构建产物，报告测试结果，并把相关结果通知给相关人员。
@@ -84,22 +84,22 @@ Jenkins提供了多种项目类型，本文以freestyle类型为例。在新建�
 
 ### 系统环境变量
 - WORKSPACE
-    工作空间的绝对路径.
+    工作空间的绝对路径。
 - BUILD_NUMBER
-  当前的构建号，比如 “8”.
+  当前的构建号，例如“8”.
 - JOB_NAME
-  当前job的名字，比如Test-demo.
+  当前job的名字，例如Test-demo.
 - BUILD_TAG
-  为了便于识别当前构建的job，比如jenkins-Test-demo-8.
+  为了便于识别当前构建的job，例如jenkins-Test-demo-8.
 - NODE_NAME
   如果构建运行在slave上，则输出该节点的名字，如果构建运行在master上，则输出master.
 - NODE_LABELS
-  运行该构建节点标签列表.
+  运行该构建节点标签列表。
 - JENKINS_HOME
-  主节点上为Jenkins存储数据分配目录的绝对路径，比如 /Users/xxxx/.jenkins.
+  主节点上为Jenkins存储数据分配目录的绝对路径，例如/Users/xxxx/.jenkins.
 - JENKINS_URL
-  jenkins服务器完整的URL，比如 http://79d3725b30cf.ngrok.io.
+  jenkins服务器完整的URL。
 - JOB_URL
-  当前构建job完整的 URLhttp://79d3725b30cf.ngrok.io/job/Test-demo/.
+  当前构建job完整的URL。
 - BUILD_URL
-  当前构建完整的URL，比如 http://79d3725b30cf.ngrok.io/job/Test-demo/8/.
+  当前构建完整的URL。
